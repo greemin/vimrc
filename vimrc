@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 17 Oct 2016 09:03:12
+" Last-modified: 28 Oct 2016 00:10:52
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -46,11 +46,13 @@ if has('gui_running')
     " add columns for the Project plugin
     set columns=110
     " enable use of mouse
-    set mouse=a
+    set mouse=c
+    " default gvim buffer = system clipboard
+    set clipboard=unnamedplus
     " for the TOhtml command
     let html_use_css=1
     " current line/column-highlighting only looks good in GUI-Vim
-    "set cursorline
+    set cursorline
     "set cursorcolumn
 endif
 
@@ -163,7 +165,7 @@ inoremap jk <esc>
 inoremap <esc> <nop>
 
 " Making it easier to making editing easier
-noremap <Leader>ev :vsplit $MYVIMRC<cr>:
+noremap <Leader>ev :vsplit <cr>:
 noremap <Leader>sv :source $MYVIMRC<cr>
 noremap <Leader><tab> <Ctrl>-W
 
