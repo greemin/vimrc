@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 28 Oct 2016 00:10:52
+" Last-modified: 28 Oct 2016 03:55:21
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -46,7 +46,7 @@ if has('gui_running')
     " add columns for the Project plugin
     set columns=110
     " enable use of mouse
-    set mouse=c
+    set mouse=v
     " default gvim buffer = system clipboard
     set clipboard=unnamedplus
     " for the TOhtml command
