@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 28 Oct 2016 03:55:21
+" Last-modified: 28 Oct 2016 04:52:01
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -165,7 +165,7 @@ inoremap jk <esc>
 inoremap <esc> <nop>
 
 " Making it easier to making editing easier
-noremap <Leader>ev :vsplit <cr>:
+noremap <Leader>ev :vsplit $MYVIMRC<cr>:
 noremap <Leader>sv :source $MYVIMRC<cr>
 noremap <Leader><tab> <Ctrl>-W
 
