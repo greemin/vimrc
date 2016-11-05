@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 28 Oct 2016 04:52:01
+" Last-modified: 05 Nov 2016 12:27:28
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -52,7 +52,7 @@ if has('gui_running')
     " for the TOhtml command
     let html_use_css=1
     " current line/column-highlighting only looks good in GUI-Vim
-    set cursorline
+    "set cursorline
     "set cursorcolumn
 endif
 
@@ -130,9 +130,10 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " for cygwin
-set shell=C:/cygwin/bin/bash
-set shellcmdflag=--login\ -c
-set shellxquote=\" 
+"set shell=C:/cygwin/bin/bash
+"set shellcmdflag=--login\ -c
+"set shellxquote=\" 
+set shell=/bin/bash
 
 
 " ************************************************************************
@@ -258,7 +259,7 @@ if has("autocmd")
   " It uses the functions above to replace the time stamp and restores cursor 
   " position afterwards (this is from the FAQ) 
   autocmd BufWritePre,FileWritePre *   ks|call UpdateTimeStamp()|'s
-
+  autocmd vimenter * NERDTree
 
 endif " has("autocmd")
 
@@ -338,3 +339,5 @@ function! UpdateTimeStamp()
  endif
  endfunction
 endif
+execute pathogen#infect()
+call pathogen#helptags()
