@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 05 Nov 2016 12:27:28
+" Last-modified: 11 Dec 2016 05:23:48
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -185,6 +185,9 @@ nnoremap <Leader>' viw<esc>a'<esc>lel
 nnoremap <Leader>H 0
 nnoremap <Leader>L $
 
+" Switching NERDTree on/off
+map <Leader>t :NERDTreeToggle<cr>
+
 map <Leader>s :Sexplore<cr> 
 map <Leader>e :Explore<cr>
 
@@ -259,7 +262,10 @@ if has("autocmd")
   " It uses the functions above to replace the time stamp and restores cursor 
   " position afterwards (this is from the FAQ) 
   autocmd BufWritePre,FileWritePre *   ks|call UpdateTimeStamp()|'s
-  autocmd vimenter * NERDTree
+
+  " Open NERDTree on startup
+  autocmd vimenter * NERDTree %:p:h
+  autocmd vimenter * wincmd p
 
 endif " has("autocmd")
 
