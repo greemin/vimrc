@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 07 Nov 2017 17:48:34
+" Last-modified: 01 Jan 2018 22:43:31
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -117,7 +117,7 @@ if has("gui")
   "   t: enable tearoff menus on Win32
   "   T: enable toolbar on Win32
   set go=0
-  set guifont=Source\ Code\ Pro
+  set guifont=Terminus\ Regular
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
