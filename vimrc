@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 11 Dec 2016 05:23:48
+" Last-modified: 07 Nov 2017 17:48:34
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -17,10 +17,10 @@ set nocompatible
 set backspace=indent,eol,start
 
 " I like 4 spaces for indenting
-set shiftwidth=4
+set shiftwidth=2
 
 " I like 4 stops
-set tabstop=4
+set tabstop=2
 
 " Spaces instead of tabs
 set expandtab
@@ -37,8 +37,7 @@ set selectmode=mouse
 "set nowritebackup
 
 if has('gui_running')
-    " i like about 80 character width lines
-    set textwidth=78
+    "set textwidth=78
     " Set 52 lines for the display
     set lines=52
     " 2 for the status line.
@@ -46,7 +45,7 @@ if has('gui_running')
     " add columns for the Project plugin
     set columns=110
     " enable use of mouse
-    set mouse=v
+    "set mouse=e
     " default gvim buffer = system clipboard
     set clipboard=unnamedplus
     " for the TOhtml command
@@ -117,7 +116,7 @@ if has("gui")
   "   b: display scrollbar at bottom of window
   "   t: enable tearoff menus on Win32
   "   T: enable toolbar on Win32
-  set go=gmr
+  set go=0
   set guifont=Source\ Code\ Pro
 endif
 
@@ -256,7 +255,7 @@ if has("autocmd")
 
   " Normally don't automatically format 'text' as it is typed, only do this
   " with comments, at 79 characters.
-  au BufNewFile,BufEnter *.c,*.h,*.java,*.jsp set formatoptions-=t tw=79
+  "au BufNewFile,BufEnter *.c,*.h,*.java,*.jsp set formatoptions-=t tw=79
 
   " add an autocommand to update an existing time stamp when writing the file 
   " It uses the functions above to replace the time stamp and restores cursor 
@@ -299,7 +298,7 @@ abbr #e  ***********************************************************************
 abbr hosts C:\WINNT\system32\drivers\etc\hosts
 
 iabbrev ssig -- <cr>Karl-Martin Zimmermann<cr>E-Mail: karl@jotech.net<cr>
-iabbrev ccopy Copyright 2016 Karl-Martin Zimmermann, some rights reserved.  
+iabbrev ccopy Copyright 2017 Karl-Martin Zimmermann, some rights reserved.  
 
 " abbreviation to manually enter a timestamp. Just type YTS in insert mode 
 iab YTS <C-R>=TimeStamp()<CR>
