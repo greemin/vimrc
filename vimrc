@@ -1,11 +1,8 @@
 " File: _vimrc             
 " Version: 1
-" Author: Seth Mason
-" Created: 19 Nov 2003 10:20:19
-" Last-modified: 24 Apr 2018 05:08:25 PM
-" All my Vim commands for the taking
-" Works on cygwin but not very well on unix machines...still trying to figure
-" it out
+" Author: greemin
+" Created: 19 Nov 2003 10:20:19 by Seth Mason
+" Last-modified: 24 Apr 2018 05:37:41 PM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -36,7 +33,7 @@ set selectmode=mouse
 "set nobackup
 "set nowritebackup
 
-if has('gui_running')
+if has('gui_running') || has('nvim')
     "set textwidth=78
     " Set 52 lines for the display
     set lines=52
@@ -108,7 +105,7 @@ let g:explSplitRight=1  " Put new window to the right of the explorer
 let g:explStartRight=0  " new windows go to right of explorer window
 
 
-if has("gui")
+if has("gui") || has('nvim')
   " set the gui options to:
   "   g: grey inactive menu items
   "   m: display menu bar
@@ -122,7 +119,8 @@ endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
+syntax on
+if &t_Co > 2 || has("gui_running") || has('nvim')
   syntax on
   set hlsearch
   set number
@@ -226,14 +224,13 @@ map <c-a> ggVG
 imap <c-z> <c-o>u
 
 " Load my color scheme 
-"if has("gui_running")
-"    " GUI colors
-"    colorscheme midnight "desert, golden, midnight, oceandeep, github
-"else
-"    " CLI colors
-"    colorscheme golden "golden
-"endif
-colorscheme onedark
+if has("gui_running") || has('nvim')
+    " GUI colors
+    colorscheme onedark "desert, golden, midnight, oceandeep, github
+else
+    " CLI colors
+    colorscheme golden "golden
+endif
 
 " ************************************************************************
 " B E G I N  A U T O C O M M A N D S
