@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 01 Jan 2018 22:43:31
+" Last-modified: 24 Apr 2018 05:08:25 PM
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -226,13 +226,14 @@ map <c-a> ggVG
 imap <c-z> <c-o>u
 
 " Load my color scheme 
-if has("gui_running")
-    " GUI colors
-    colorscheme midnight "desert, golden, midnight, oceandeep, github
-else
-    " CLI colors
-    colorscheme golden "golden
-endif
+"if has("gui_running")
+"    " GUI colors
+"    colorscheme midnight "desert, golden, midnight, oceandeep, github
+"else
+"    " CLI colors
+"    colorscheme golden "golden
+"endif
+colorscheme onedark
 
 " ************************************************************************
 " B E G I N  A U T O C O M M A N D S
