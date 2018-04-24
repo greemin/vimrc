@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 24 Apr 2018 05:37:41 PM
+" Last-modified: 24 Apr 2018 07:04:25 PM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -42,7 +42,7 @@ if has('gui_running') || has('nvim')
     " add columns for the Project plugin
     set columns=110
     " enable use of mouse
-    "set mouse=e
+    set mouse=a
     " default gvim buffer = system clipboard
     set clipboard=unnamedplus
     " for the TOhtml command
@@ -131,6 +131,14 @@ endif
 "set shellcmdflag=--login\ -c
 "set shellxquote=\" 
 set shell=/bin/bash
+
+
+" ************************************************************************
+" P L U G I N S
+"
+
+let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
+let NERDTreeChDirMode=2
 
 
 " ************************************************************************
@@ -261,9 +269,15 @@ if has("autocmd")
   autocmd BufWritePre,FileWritePre *   ks|call UpdateTimeStamp()|'s
 
   " Open NERDTree on startup
-  autocmd vimenter * NERDTree %:p:h
+  autocmd vimenter * call RestoreSess()
+  autocmd vimenter * NERDTree %:p:h 
   autocmd vimenter * wincmd p
 
+  " Save vim session when leaving
+  if has("gui_running") || has('nvim')
+    autocmd VimLeave * NERDTreeClose
+    autocmd VimLeave * call SaveSess()
+  endif
 endif " has("autocmd")
 
 " GUI ONLY type stuff.
@@ -342,5 +356,23 @@ function! UpdateTimeStamp()
  endif
  endfunction
 endif
+
+fu! SaveSess()
+    execute 'mksession! ' . getcwd() . '/.session.vim'
+endfunction
+
+fu! RestoreSess()
+if filereadable(getcwd() . '/.session.vim')
+    execute 'so ' . getcwd() . '/.session.vim'
+    if bufexists(1)
+        for l in range(1, bufnr('$'))
+            if bufwinnr(l) == -1
+                exec 'sbuffer ' . l
+            endif
+        endfor
+    endif
+endif
+endfunction
+
 execute pathogen#infect()
 call pathogen#helptags()
