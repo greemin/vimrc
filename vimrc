@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 24 Apr 2018 07:04:25 PM
+" Last-modified: 24 Apr 2018 07:12:31 PM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -269,7 +269,7 @@ if has("autocmd")
   autocmd BufWritePre,FileWritePre *   ks|call UpdateTimeStamp()|'s
 
   " Open NERDTree on startup
-  autocmd vimenter * call RestoreSess()
+  autocmd vimenter * nested :call RestoreSess()
   autocmd vimenter * NERDTree %:p:h 
   autocmd vimenter * wincmd p
 
