@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 24 Apr 2018 07:12:31 PM
+" Last-modified: 25 Apr 2018 11:44:35 PM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -272,6 +272,11 @@ if has("autocmd")
   autocmd vimenter * nested :call RestoreSess()
   autocmd vimenter * NERDTree %:p:h 
   autocmd vimenter * wincmd p
+
+  autocmd DirChanged * NERDTreeClose
+  autocmd DirChanged * nested :call RestoreSess()
+  autocmd DirChanged * NERDTree %:p:h 
+  autocmd DirChanged * wincmd p
 
   " Save vim session when leaving
   if has("gui_running") || has('nvim')
