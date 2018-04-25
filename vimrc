@@ -36,11 +36,11 @@ set selectmode=mouse
 if has('gui_running') || has('nvim')
     "set textwidth=78
     " Set 52 lines for the display
-    set lines=52
+    "set lines=52
     " 2 for the status line.
     set cmdheight=2
     " add columns for the Project plugin
-    set columns=110
+    "set columns=110
     " enable use of mouse
     set mouse=a
     " default gvim buffer = system clipboard
@@ -114,12 +114,10 @@ if has("gui") || has('nvim')
   "   t: enable tearoff menus on Win32
   "   T: enable toolbar on Win32
   set go=0
-  set guifont=Terminus\ Regular
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-syntax on
 if &t_Co > 2 || has("gui_running") || has('nvim')
   syntax on
   set hlsearch
