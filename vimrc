@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 26 Apr 2018 12:47:51 AM
+" Last-modified: 14 Oct 2020 11:11:34 AM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -99,6 +99,8 @@ set notildeop
 " highlight strings inside C comments
 let c_comment_strings=1
 
+set splitbelow
+set splitright
 " Commands for :Explore
 let g:explVertical=1    " open vertical split winow
 let g:explSplitRight=1  " Put new window to the right of the explorer
@@ -137,6 +139,8 @@ set shell=/bin/bash
 
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 let NERDTreeChDirMode=2
+
+let g:vimwiki_list = [{'path': '~/Sync/wiki', 'path_html':'~/Sync/wiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Log' }, {'path': '~/Sync/evewiki', 'path_html':'~/Sync/evewiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Flight Log'}]
 
 
 " ************************************************************************
@@ -267,22 +271,22 @@ if has("autocmd")
   autocmd BufWritePre,FileWritePre *   ks|call UpdateTimeStamp()|'s
 
   if has("gui_running") || has('nvim')
-    if has('nvim')
+    if has('nvim') && exists('#DirChanged')
       " Load session on cwd-change
-      "autocmd DirChanged * NERDTreeClose
-      "autocmd DirChanged * nested :call RestoreSess()
-      "autocmd DirChanged * NERDTree %:p:h 
-      "autocmd DirChanged * wincmd p
+      autocmd DirChanged * NERDTreeClose
+      autocmd DirChanged * nested :call RestoreSess()
+      autocmd DirChanged * NERDTree %:p:h 
+      autocmd DirChanged * wincmd p
     endif
 
     " Open NERDTree on startup and restore sessions
-    autocmd vimenter * nested :call RestoreSess()
+    "autocmd vimenter * nested :call RestoreSess()
     autocmd vimenter * NERDTree %:p:h 
     autocmd vimenter * wincmd p
 
     " Save vim session when leaving
     autocmd VimLeave * NERDTreeClose
-    autocmd VimLeave * call SaveSess()
+    "autocmd VimLeave * call SaveSess()
   endif
 
 endif " has("autocmd")
