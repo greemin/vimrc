@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 14 Oct 2020 11:11:34 AM
+" Last-modified: 18 Dec 2020 02:48:54 PM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -142,6 +142,8 @@ let NERDTreeChDirMode=2
 
 let g:vimwiki_list = [{'path': '~/Sync/wiki', 'path_html':'~/Sync/wiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Log' }, {'path': '~/Sync/evewiki', 'path_html':'~/Sync/evewiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Flight Log'}]
 
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " ************************************************************************
 " C O M M A N D S
@@ -177,10 +179,6 @@ noremap <Leader>ev :vsplit $MYVIMRC<cr>:
 noremap <Leader>sv :source $MYVIMRC<cr>
 noremap <Leader><tab> <Ctrl>-W
 
-" Swap line downwards or upwards
-noremap <Leader>- ddp
-noremap <Leader>_ ddkP
-
 " Uppercase the current word
 inoremap <Leader><c-u> <esc>bvwUi
 nnoremap <Leader><c-u> bvwU<esc> 
@@ -189,8 +187,8 @@ nnoremap <Leader><c-u> bvwU<esc>
 nnoremap <Leader>" viw<esc>a"<esc>lel
 nnoremap <Leader>' viw<esc>a'<esc>lel
 
-nnoremap <Leader>H 0
-nnoremap <Leader>L $
+"" Comment out line with "//"
+nnoremap <Leader>/ 0i//<esc>j
 
 " Switching NERDTree on/off
 map <Leader>t :NERDTreeToggle<cr>
