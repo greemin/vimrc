@@ -140,7 +140,7 @@ set shell=/bin/bash
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 let NERDTreeChDirMode=2
 
-let g:vimwiki_list = [{'path': '~/Sync/wiki', 'path_html':'~/Sync/wiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Log' }, {'path': '~/Sync/evewiki', 'path_html':'~/Sync/evewiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Flight Log'}]
+let g:vimwiki_list = [{'path': '~/Sync/wiki', 'path_html':'~/Sync/wiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Log' }, {'path': '~/Sync/workwiki', 'path_html':'~/Sync/workwiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Work Log' }, {'path': '~/Sync/evewiki', 'path_html':'~/Sync/evewiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Flight Log'}]
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
