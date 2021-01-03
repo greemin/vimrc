@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 18 Dec 2020 02:48:54 PM
+" Last-modified: 03 Jan 2021 03:12:28 PM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -269,13 +269,11 @@ if has("autocmd")
   autocmd BufWritePre,FileWritePre *   ks|call UpdateTimeStamp()|'s
 
   if has("gui_running") || has('nvim')
-    if has('nvim') && exists('#DirChanged')
-      " Load session on cwd-change
-      autocmd DirChanged * NERDTreeClose
-      autocmd DirChanged * nested :call RestoreSess()
-      autocmd DirChanged * NERDTree %:p:h 
-      autocmd DirChanged * wincmd p
-    endif
+    " Load session on cwd-change
+    autocmd DirChanged * NERDTreeClose
+    autocmd DirChanged * nested :call RestoreSess()
+    autocmd DirChanged * NERDTree %:p:h 
+    autocmd DirChanged * wincmd p
 
     " Open NERDTree on startup and restore sessions
     "autocmd vimenter * nested :call RestoreSess()
@@ -284,7 +282,7 @@ if has("autocmd")
 
     " Save vim session when leaving
     autocmd VimLeave * NERDTreeClose
-    "autocmd VimLeave * call SaveSess()
+    autocmd VimLeave * call SaveSess()
   endif
 
 endif " has("autocmd")
