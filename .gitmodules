@@ -12,7 +12,7 @@
 
 [submodule "nerdtree-git-plugin"]
 	path = bundle/nerdtree-git-plugin
-	url = https://github.com/vimwiki/vimwiki.git
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
 
 [submodule "pathogen"]
 	path = bundle/pathogen
