@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 03 Jan 2021 03:12:28 PM
+" Last-modified: 05 Jan 2021 09:42:31
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -275,8 +275,7 @@ if has("autocmd")
     autocmd DirChanged * NERDTree %:p:h 
     autocmd DirChanged * wincmd p
 
-    " Open NERDTree on startup and restore sessions
-    "autocmd vimenter * nested :call RestoreSess()
+    " Open NERDTree on startup
     autocmd vimenter * NERDTree %:p:h 
     autocmd vimenter * wincmd p
 
