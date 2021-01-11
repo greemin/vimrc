@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 03 Jan 2021 03:12:28 PM
+" Last-modified: 03 Jan 2021 04:02:59 PM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -365,7 +365,9 @@ function! UpdateTimeStamp()
 endif
 
 fu! SaveSess()
+  if filereadable(getcwd() . '/.session.vim')
     execute 'mksession! ' . getcwd() . '/.session.vim'
+  endif
 endfunction
 
 fu! RestoreSess()
