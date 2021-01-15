@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 05 Jan 2021 09:42:31
+" Last-modified: 15 Jan 2021 15:34:35
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -142,9 +142,6 @@ let NERDTreeChDirMode=2
 
 let g:vimwiki_list = [{'path': '~/Sync/workwiki', 'path_html':'~/Sync/workwiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Work Log' }, {'path': '~/Sync/wiki', 'path_html':'~/Sync/wiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Log' }, {'path': '~/Sync/evewiki', 'path_html':'~/Sync/evewiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Flight Log'}]
 
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-
 " ************************************************************************
 " C O M M A N D S
 "
@@ -269,19 +266,22 @@ if has("autocmd")
   autocmd BufWritePre,FileWritePre *   ks|call UpdateTimeStamp()|'s
 
   if has("gui_running") || has('nvim')
-    " Load session on cwd-change
-    autocmd DirChanged * NERDTreeClose
-    autocmd DirChanged * nested :call RestoreSess()
-    autocmd DirChanged * NERDTree %:p:h 
-    autocmd DirChanged * wincmd p
+  "  " Load session on cwd-change
+  "  autocmd DirChanged * NERDTreeClose
+  "  autocmd DirChanged * nested :call RestoreSess()
+  "  autocmd DirChanged * NERDTree %:p:h 
+  "  autocmd DirChanged * wincmd p
 
-    " Open NERDTree on startup
-    autocmd vimenter * NERDTree %:p:h 
-    autocmd vimenter * wincmd p
+  "  " Open NERDTree on startup
+  "  autocmd vimenter * NERDTree %:p:h 
+  "  autocmd vimenter * wincmd p
 
-    " Save vim session when leaving
-    autocmd VimLeave * NERDTreeClose
-    autocmd VimLeave * call SaveSess()
+  "  " Save vim session when leaving
+  "  autocmd VimLeave * NERDTreeClose
+  "  autocmd VimLeave * call SaveSess()
+     autocmd vimenter * VimwikiIndex
+     autocmd vimenter * split
+     autocmd vimenter * VimwikiDiaryIndex
   endif
 
 endif " has("autocmd")
@@ -331,6 +331,9 @@ iab YTS <C-R>=TimeStamp()<CR>
 " %S - Seconds
 " %Z - Time Zone
 iab YDATETIME <c-r>=strftime(": %a %b %d, %Y %H:%M:%S %Z")<cr>
+iab YDATE <c-r>=strftime("%d.%b.%Y")<cr>
+
+iab YTODO <c-r> ## TODO<cr>  * [ ] Meetings einplanen<cr>worklog
 
 
 " ************************************************************************
@@ -364,7 +367,9 @@ function! UpdateTimeStamp()
 endif
 
 fu! SaveSess()
-    execute 'mksession! ' . getcwd() . '/.session.vim'
+    if filereadable(getcwd() . '/.session.vim')
+        execute 'mksession! ' . getcwd() . '/.session.vim'
+    endif
 endfunction
 
 fu! RestoreSess()
