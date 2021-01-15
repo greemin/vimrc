@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 05 Jan 2021 09:42:31
+" Last-modified: 15 Jan 2021 04:02:22 PM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -331,7 +331,11 @@ iab YTS <C-R>=TimeStamp()<CR>
 " %S - Seconds
 " %Z - Time Zone
 iab YDATETIME <c-r>=strftime(": %a %b %d, %Y %H:%M:%S %Z")<cr>
+iab YDATE <c-r>=strftime("%d.%m.%Y")<cr>
 
+" vimwiki TODOs
+iab YTODO <c-r> ## TODO<cr> * [ ] lesen<cr>research
+ 
 
 " ************************************************************************
 "  F U N C T I O N S
