@@ -2,7 +2,7 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 15 Jan 2021 04:02:22 PM
+" Last-modified: 30 Jan 2021 11:41:04 AM
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -99,6 +99,7 @@ set notildeop
 " highlight strings inside C comments
 let c_comment_strings=1
 
+set noequalalways
 set splitbelow
 set splitright
 " Commands for :Explore
@@ -175,7 +176,7 @@ inoremap jk <esc>
 inoremap <esc> <nop>
 
 " Making it easier to making editing easier
-noremap <Leader>ev :vsplit $MYVIMRC<cr>:
+noremap <Leader>ev :vsplit $MYVIMRC<cr>
 noremap <Leader>sv :source $MYVIMRC<cr>
 noremap <Leader><tab> <Ctrl>-W
 
@@ -333,9 +334,6 @@ iab YTS <C-R>=TimeStamp()<CR>
 iab YDATETIME <c-r>=strftime(": %a %b %d, %Y %H:%M:%S %Z")<cr>
 iab YDATE <c-r>=strftime("%d.%m.%Y")<cr>
 
-" vimwiki TODOs
-iab YTODO <c-r> ## TODO<cr> * [ ] lesen<cr>research
- 
 
 " ************************************************************************
 "  F U N C T I O N S
