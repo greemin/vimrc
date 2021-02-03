@@ -1,7 +1,10 @@
 " ************************************************************************
-" NEOVIM Config
+" N E O V I M   C O N F I G
 "
 
+set encoding=UTF-8
+
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 " default buffer = system clipboard
 set clipboard=unnamedplus
 
@@ -54,9 +57,9 @@ set number
 " P L U G I N S
 "
 call plug#begin('~/.vim/plugged')
-	Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'itchyny/lightline.vim'
 	Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+  Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
   Plug 'pangloss/vim-javascript'
   Plug 'mxw/vim-jsx'
   Plug 'tpope/vim-fugitive'
