@@ -113,13 +113,13 @@ map <c-s> :w<cr>
 imap <c-s> <c-o><c-s>
 imap <c-s> <esc><c-s>
 
+
 " ************************************************************************
 " A U T O C O M M A N D S
 "
 
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin on
 
@@ -130,3 +130,39 @@ autocmd BufReadPost *
 	\ if line("'\"") > 0 && line("'\"") <= line("$") |
 	\   exe "normal g`\"" |
 	\ endif
+
+autocmd DirChanged * NERDTreeClose
+autocmd DirChanged * nested :call RestoreSess()
+autocmd DirChanged * NERDTree
+autocmd DirChanged * wincmd p
+
+" Open NERDTree on startup
+autocmd vimenter * NERDTree %:p:h 
+autocmd vimenter * wincmd p
+
+" Save vim session when leaving
+autocmd VimLeave * NERDTreeClose
+autocmd VimLeave * call SaveSess()
+
+" ************************************************************************
+"  F U N C T I O N S
+"
+
+fu! SaveSess()
+  if filereadable(getcwd() . '/.session.vim')
+    execute 'mksession! ' . getcwd() . '/.session.vim'
+  endif
+endfunction
+
+fu! RestoreSess()
+if filereadable(getcwd() . '/.session.vim')
+    execute 'so ' . getcwd() . '/.session.vim'
+    if bufexists(1)
+        for l in range(1, bufnr('$'))
+            if bufwinnr(l) == -1
+                exec 'sbuffer ' . l
+            endif
+        endfor
+    endif
+endif
+endfunction
