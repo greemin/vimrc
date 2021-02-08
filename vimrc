@@ -2,7 +2,9 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 30 Jan 2021 11:41:04 AM
+" Last-modified: 08 Feb 2021 07:03:50 PM
+
+set encoding=UTF-8
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -34,6 +36,7 @@ set selectmode=mouse
 "set nowritebackup
 
 if has('gui_running') || has('nvim')
+    set guifont=DroidSansMono\ Nerd\ Font\ 11
     "set textwidth=78
     " Set 52 lines for the display
     "set lines=52
