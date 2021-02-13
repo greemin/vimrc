@@ -2,9 +2,12 @@
 " Version: 1
 " Author: greemin
 " Created: 19 Nov 2003 10:20:19 by Seth Mason
-" Last-modified: 08 Feb 2021 07:03:50 PM
+" Last-modified: 12 Feb 2021 08:41:35 PM
 
 set encoding=UTF-8
+
+" make vim silent
+set visualbell
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
@@ -143,6 +146,7 @@ set shell=/bin/bash
 
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 let NERDTreeChDirMode=2
+let NERDTreeShowHidden=1
 
 let g:vimwiki_list = [{'path': '~/Sync/wiki', 'path_html':'~/Sync/wiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Log' }, {'path': '~/Sync/workwiki', 'path_html':'~/Sync/workwiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Work Log' }, {'path': '~/Sync/evewiki', 'path_html':'~/Sync/evewiki/export/html/', 'syntax': 'markdown', 'ext': '.md', 'diary_header': 'Flight Log'}]
 
@@ -154,7 +158,7 @@ let g:prettier#autoformat_require_pragma = 0
 "
 
 "switch to directory of current file
-command! CD cd %:p:h
+"command! CD cd %:p:h
 
 " ************************************************************************
 " K E Y   M A P P I N G S
